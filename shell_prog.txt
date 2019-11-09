@@ -1,0 +1,339 @@
+1>	touch exec_mode.sh
+		chmod +x $1
+2>	echo 'The date today is' `date`
+
+3>	dir=`pwd`
+	pwd 
+	cd ~
+	pwd
+	cd $dir
+	pwd		
+
+4>	for i in *; do    echo $i; done
+
+5>	read -p 'Username: ' User
+	read -s -p 'Password: ' Pass
+	echo $User $Pass  
+
+6>	echo $#
+
+7>	:<<'END'
+	Name : Mohit Jain
+	Roll No. : 180101043
+	Semester : 3rd Sem
+	bash
+	END
+	read -p 'This is the first shell program. Please enter the username : ' username
+	echo 'Username:: ' $username
+
+	#'End of Program'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+8>	read num
+	if [ $num -eq 0 ]
+	then
+		echo 'Equal to zero'
+	elif [ $num -gt 0 ]
+	then
+		echo 'Greater than zero'
+	else
+		echo 'Less than zero'
+	fi		
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+9>	read -p 'Enter file name : ' fn
+	if [ -e $fn ]
+	then
+		echo 'file exists'
+		if [ -r $fn ]
+		then
+			echo 'File has read permission'
+		else
+			echo 'File does not have read permission' 	
+		fi
+
+		if [ -w $fn ]
+		then
+			echo 'File has write permission'
+		else
+			echo 'File does not have write permission' 		
+		fi
+
+		if [ -x $fn ]
+		then
+			echo 'File has execute permission'
+		else
+			echo 'File does not have execute permission' 	
+		fi
+	else
+		echo 'File does not exist'
+	fi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+10>	read -p 'Enter the total number: ' n 
+	echo 'Enter numbers :'
+	i=0
+	sum=0
+	while [ $i -lt $n ]
+	do
+		read a[$i]
+		sum=`expr $sum + ${a[$i]}`
+		i=`expr $i + 1`
+
+	done
+
+
+	avg=`echo "$sum / $n" | bc -l`
+	printf "Average: "'%0.3f' "$avg"
+	echo
+10> kudhse
+
+read -a nums
+sum=0
+n=${#nums[@]}
+for ((i=0;i<n;i++))
+do
+sum=`echo "$sum + ${nums[i]}" | bc -l`
+done
+avg=`echo "$sum/$n" | bc -l`
+printf '%0.3f' "$avg"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11>	ans=`echo 20.5^5 | bc -l`
+	printf '%0.4f' "$ans"
+11> kudhse
+a=20.5
+b=5
+ans=`echo "$a^$b" | bc -l`
+printf '%0.4f' "$ans"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+12>	len=`expr length "$s"`
+	if [ $len -eq 1 ]
+	then 
+		case s in
+			[a-z]* )
+				echo 'lowercase';;
+			[A-Z]* )
+				echo 'upppercase';;
+			[0-9]* )
+				echo 'number';;
+			* )
+				echo 'Special character';;
+		esac
+	else
+		echo 'wrong input'
+	fi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+///length of string
+read s
+len=`expr length "$s"`
+printf "$len"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+12> kudhse
+read s
+case $s in
+	[a-z]) echo "low";;
+	[A-Z]) echo "high";;
+	[0-9]) echo "digit";;
+	[^a]) echo "special";;
+	*) echo "wrong inp";;
+	
+esac
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+13>	echo 'Enter 2 numbers'
+	read a
+	read b
+	read -p 'enter sign : ' sign
+
+	case "$sign" in
+			"+" )
+				temp=`echo "$a + $b" | bc -l`
+				printf '%0.3f' "$temp"
+				echo;;
+			"-" )
+				temp=`echo "$a - $b" | bc -l`
+				printf '%0.3f' "$temp"
+				echo;;
+			"*" )
+				temp=`echo "$a * $b" | bc -l`
+				printf '%0.3f' "$temp"
+				echo;;
+			"/" )
+				temp=`echo "$a / $b" | bc -l`
+				printf '%0.3f' "$temp"
+				echo;;
+	esac
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+14. #!/bin/bash
+
+read a b 
+  
+
+m=$a 
+
+if [ $b -lt $m ] 
+then 
+m=$b 
+fi 
+  
+
+while [ $m -ne 0 ] 
+do
+x=`expr $a % $m` 
+y=`expr $b % $m` 
+  
+
+if [ $x -eq 0 -a $y -eq 0 ] 
+then 
+  
+
+echo gcd of $a and $b is $m 
+break
+fi 
+m=`expr $m - 1` 
+  
+done
+
+15. #!/bin/bash
+
+while true 
+do
+	read s
+	if [[ "$s" == "Bye" ]] 
+	then
+		break
+	fi
+	echo $s
+	echo
+
+	
+done
+15. kudhse
+
+read s
+while [ $s != "Bye" ]
+do 
+echo $s
+read s
+done
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16.
+for((i=0;i<3;i++))
+do
+	for((j=0;j<2;j++))
+	do
+		if [ $i -eq 0 ]
+		then
+			ls
+		elif [ $i -eq 1 ] 
+		then
+            pwd
+        else
+        	date
+        fi	
+    done
+done
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+17.#!/bin/bash
+
+read string
+
+if [[ "$(echo "$string" | rev)" == "$string" ]]; then
+    echo "YES"
+	echo ${#string}
+else
+ echo "NO"
+ echo ${#string}
+fi
+
+
+17>kudhse 
+#!/bin/bash
+read s
+n=`expr length "$s"`
+for ((i=0,j=n-1;i<j;i++,j--))
+do
+	if [ ${s:i:1} != ${s:j:1} ]
+	then
+		echo not palin
+		break
+	fi	
+done	
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+substring os string
+echo ${var:3:1}
+start index=3,length=1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+18. #!/bin/bash
+
+read file1
+read file2
+if [[ -e $file1 && -e $file2 ]]; then
+	echo "YES"
+else echo "NO"	
+fi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+19.#!/bin/bash
+
+select drink in tea coffee water juice appe all none
+do 
+	case $drink in
+		tea|coffee|water|all)
+			echo "Go to canteen"
+			;;
+		juice|appe)
+		    echo "Available at home"
+		    ;;
+		none)
+		    break
+		    ;;
+		*)
+		   echo "Invalid selection"       	
+	esac
+done
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+20.#!/bin/bash
+words(){
+read file
+wc -l < $file
+wc -w < $file
+wc -c < $file 
+}
+words
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21.#!/bin/bash
+
+row=3
+col=3
+array1=()
+array2=()
+array3=()
+for (( i = 0; i < row; i++ )); do
+	read -a arr
+	for (( j = 0; j < col; j++ )); do
+		index=$((i*3+j))
+		array1[${index}]=${arr[$j]}
+    done
+done
+for (( i = 0; i < row; i++ )); do
+	read -a arr
+	for (( j = 0; j < col; j++ )); do
+		index=$((i*3+j))
+		array2[${index}]=${arr[$j]}
+    done
+done
+for (( i = 0; i < row; i++ )); do
+	
+	for (( j = 0; j < col; j++ )); do
+		index=$((i*3+j))
+		array3[${index}]=`expr ${array1[${index}]} + ${array2[${index}]}`
+    done
+done
+for (( i = 0; i < row; i++ )); do
+	
+	for (( j = 0; j < col; j++ )); do
+		index=$((i*3+j))
+		echo -n ${array3[${index}]} " "
+    done
+    echo
+done
+
+			
