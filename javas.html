@@ -1,0 +1,154 @@
+<html>
+<title>
+	lab questions 
+</title>
+
+<script>
+	// q1
+	// var x=prompt("input the number " );
+	// //console.log(x);
+	// var c=1;
+	// while(x!=1 && c<10000000)
+	// {
+	// 	var sum=0;
+	// 	c++;
+	// 	while(x>0)
+	// 	{
+		// 	var f=x%10;
+		// 	sum+=(f*f);
+		// 	x=x-x%10;
+		// 	x=x/10;
+
+	// 	}
+	// 	x=sum;
+
+	// }
+
+	// if(x==1)
+	// 	alert("happy");
+	// else
+	// 	alert("sad");
+
+
+	//q2
+	// var s=prompt("input : ");
+	// if(typeof s == "string")
+	// 	alert("string it is");
+	// if(s=="")
+	// 	alert("empty");
+	// var res=s.split(" ");
+	// out=""
+	// for (var i in res)
+	// {
+	// 	out+=(res[i]+" ");
+	// 	//console.log(res[i]);
+	// }
+	// console.log(out);
+	// //email
+
+
+	//q3 && q4
+
+	// var st=prompt("th");
+	// var arr=st.split(",");
+
+	
+	// var nums="";
+	// for (var i in arr)
+	// {
+	// 	nums= nums + arr[i] + " ";
+	// 	arr[i]=parseInt(arr[i]);
+	// }
+	// arr.sort(function(a, b){return b - a;});
+	// console.log(arr);
+	// console.log(nums);
+
+	//q5 && q6
+
+	var org=['F','O','X'];
+	var guessed=[0,0,0];
+	var arr= new Array(26);
+	var g=0;
+
+	for(var i=0;i<26;i++)
+	{
+		arr[i]=0;
+	}
+	var s="A".charCodeAt(0);
+
+	function guessLetter(x)
+	{
+
+		for(var i in org)
+		{
+			if(guessed[i]==0 && x==org[i])
+			{
+				alert("you found a letter " );
+				guessed[i]=1;
+			}
+		}
+		console.log("you have this till nowe: ")
+		var c=0;
+		var H="";
+		for(var i in org)
+		{
+			if(guessed[i]==1)
+			{
+				H+=(org[i]);
+				c+=1;
+			}
+			else
+			{
+				H+="_";
+			}
+		}
+		console.log(H);
+		if(c==3)
+		{
+			alert("***********you won**************");
+			g=100;
+			return 1;
+		}
+
+		return 0;
+
+
+	}
+
+	var x=prompt("enter letter guessed : ");
+
+	while(guessLetter(x)==0 && g<5)
+	{
+		
+		x=prompt("enter next letter guessed : ");
+		x=x.toUpperCase();
+		if(arr[x.charCodeAt(0)-s]==1)
+		{
+			continue;
+		}
+		else
+		{
+			arr[x.charCodeAt(0)-s]=1;
+			g++;
+		}
+
+
+	}
+	if(g==5){
+		alert(":((( sorry you lost");
+	}
+
+
+
+
+
+
+
+
+
+
+</script>
+<body>
+	<p> welcome idiots</p>
+</body>
+</html>
