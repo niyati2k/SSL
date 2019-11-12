@@ -1,0 +1,52 @@
+find <path> <search criteria> <action>
+
+1)find
+--display pathnames of all files in the current directory and subdirectories
+
+2)find -type f
+--find only files
+
+3)find -type d
+--findonly directories
+
+4)find . -type f -name abc.txt
+--find current directory,folders and file name abc.txt
+
+5)find . -type f -perm 0777
+--find files with permission 777
+
+6)find . -type f ! -perm 0777
+--find files without the permission 777
+
+7)find . -type f -perm 0777 -exec chmod 755 {} \;
+--exec command executes all the commands in front of it
+  {}->place holder for all the files that it will hold
+
+8)find/ -mtime 10
+--all files that were modified 10days back
+
+9)find/ -atime 10
+--all files that were accessed 10days back
+
+10)find/ -mtime +10 -mtime -20
+--all files which are modified more than 10days and less than 20days
+
+11)find/ -mmin 1
+--find all the files modified in last 1 min
+
+12)find/ -type f -cmin 1
+--find all files changed in last 1 min
+
+13)find/ -size -1M
+--files less than 1mb
+
+
+
+
+
+
+
+
+
+
+

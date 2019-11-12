@@ -1,0 +1,62 @@
+GREP
+1) "^GNU" 
+--GNU at beginning of a line
+
+2) "and$"
+--and at end of a line
+
+3)"..cept"
+--any two chars before (cept)
+
+4)"t[wo]o"
+--any one of w,o
+
+5) "[^c]ode"
+--".ode" except code
+
+6)"^[A-Z]"
+--every line beginning with cap letter
+
+7)"([A-Za-z ]*)"
+--each line that contained an opening and closing parenthesis, with only letters and single spaces in between
+(repeat char, 0 or more no. of times)
+
+8)"^[A-Z].*\.$" 
+--any line starting with cap letter, ending with period (\. (escape char)) and in between anything,any no. of times
+
+9)“^[^a-z A-Z]”
+--lines beginning with non-alphabetic character
+
+10)"New\.\[abc\]"
+--ignores special meaning of the char following it,search the pattern as New.[abc]
+
+11)"[aA]gg*[ar][ar]wal"
+--agarwal,agrawal,aggrawal,aggarwal ;; * means zero or more occurences of the prev char
+
+
+12)We can group expressions together using parentheses.
+grep "\(grouping\)"
+grep -E "(grouping)"
+egrep "(grouping)" 
+(equivalent statements)
+
+13)-E "(GPL|General Public License)"
+-- find either "GPL" or "General Public License" 
+
+14)-E "(copy)?right"
+-- matches "copyright" and "right" by putting "copy" in an optional group;; '?' matches char zero or more no. of times in -E
+
+15)-E "free[^[:space:]]+" 
+-- "free" plus one or more characters that are not whitespace:
+    + must match at least once
+
+16)-E "[AEIOUaeiou]{3}"
+--find all of the lines that contain triple-vowels
+
+17) -E "[[:alpha:]]{16,20}"
+--any words that have between 16 and 20 characters
+
+18) -E "boots?"
+--query will return boot,boots
+
+
