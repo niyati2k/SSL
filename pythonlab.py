@@ -45,7 +45,7 @@ c = int(input())
 
 is_triangle(a,b,c)
 
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # In[1]:
 
 
@@ -60,7 +60,7 @@ for i in range(1,n+1):
     print (f(i), end=" ")
 f(n)
 
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # In[27]:
 
 
@@ -103,7 +103,7 @@ def my_rev(s):
 s=input()
 my_rev(s)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-# In[23]:
+#QUES 7
 
 
 def find_count(s, index, elem):
@@ -121,7 +121,7 @@ elem = input()
 find_count(s,p,elem)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
-# In[38]:
+# QUES 8
 
 
 arr = [int(i) for i in input().split()]
@@ -143,7 +143,7 @@ def cum(l):
 elem=[1,2,3,4]
 print(cum(elem))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# In[51]:
+# QUES 9
 
 
 def is_anagram(s1,s2):
@@ -165,34 +165,27 @@ def is_anagram(s1,s2):
 s1 = input()
 s2 = input()
 is_anagram(s1,s2)
-#or
-
-import math 
-def ana(a,b):
-    n1=len(a)
-    n2=len(b)
-    if n1 != n2:
+or
+#import math
+def is_ana(s1,s2):
+    if len(s1) != len(s2):
         return False
-    of_a=[]
-    of_b=[]
-    for i in range (0,26):
-        of_a.append(0)
-        of_b.append(0)
-    for i in range(0,n1):
-        of_a[ord(a[i])-ord('a')]+=1
-        of_b[ord(b[i])-ord('a')]+=1
-        
-    for i in range(0,26):
-        if of_a[i] != of_b[i]:
+    a= []
+    b= []
+    for i in range(0,len(s1)):
+        a.append(s1[i])
+        b.append(s2[i])    
+    a.sort()
+    b.sort()
+    for i in range(0,len(s1)):
+        if a[i] != b[i]:
             return False
-
-    return True
+    return True    
 a=input()
 b=input()
-print(ana(a,b))
+print(is_ana(a,b)) 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# In[57]:
-
+#QUES 10
 
 Dic = {}
 
@@ -221,9 +214,7 @@ s=input()
 qten(s)  
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
-# In[56]:
-
-
+#QUES 11
 import pickle
 Dic = {}
 
@@ -252,15 +243,13 @@ b = pickle.load(handle)
 handle.close()
 print (b)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# In[77]:
-
+#QUES 12
 
 import random
-with open('words.txt') as f:
-    lines = f.read()    lines = lines.split()
-    lines = random.sample(lines,200)
-    
-lines.sort()
+f= open("words.txt",r)
+lines = f.read()
+lines = lines.split()
+lines = random.sample(lines,200)
 lines.sort(key=len,reverse=True)
 print(lines)
 f.close()
@@ -269,10 +258,29 @@ f1 = open("words_200.txt", "w")
 for i in lines:
     f1.write(i +'\n')
 f1.close()    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import os 
+print(os.getcwd()) 
+# To print absolute path on your system 
+# os.path.abspath('.')  
+  
+# To print files and directories in the current directory 
+# on your system 
+# os.listdir('.') 
+topdown − If optional argument topdown is True or not specified,
+directories are scanned from top-down.
+If topdown is set to False, directories are scanned from bottom-up.
+import os
+for root, dirs, files in os.walk(".", topdown=False):
+   for name in files:
+      print(os.path.join(root, name))
+   for name in dirs:
+      print(os.path.join(root, name))
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# In[80]:
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#QUES 13
 
 import os
 
